@@ -1,0 +1,22 @@
+{
+    "name":"ckEditor Plugin",
+    "version":"1.0",
+    "author":"Reuben Brown",
+    "location":"reubenbrown13/cfwheels-ckEditor-plugin",
+    "directory":"/plugins/",
+    "createPackageDirectory":true,
+    "packageDirectory":"ckEditor",
+    "slug":"cfwheels-ckEditor-plugin",
+    "type":"cfwheels-plugins",
+    "homepage":"https://github.com/reubenbrown13/cfwheels-ckEditor-plugin",
+    "shortDescription":"CFWheels 2.x Adds ckEditor textArea option.",
+    "keywords":"ckEditor",
+    "private":false,
+    "scripts":{
+        "postVersion":"package set location='reubenbrown13/cfwheels-ckEditor-plugin#v`package version`'",
+        "postPublish":"!git push --follow-tags",
+        "patch-release":"bump --patch && publish",
+        "minor-release":"bump --minor && publish",
+        "major-release":"bump --major && publish"
+    }
+}
