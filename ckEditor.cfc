@@ -40,6 +40,7 @@ component displayname="ckEditor" output="false" author="Reuben Brown" support="r
 		string errorElement,
 		string errorClass,
 		boolean richText = false,
+		boolean loadCkEditorLib = false,
 		any encode
 	) {
 		$args(name="textArea", reserved="name", args=arguments);
@@ -50,8 +51,6 @@ component displayname="ckEditor" output="false" author="Reuben Brown" support="r
 		local.before = $formBeforeElement(argumentCollection=arguments);
 		local.after = $formAfterElement(argumentCollection=arguments);
 		if ( arguments.richText AND StructKeyExists(arguments, "id") ) {
-			// set CKEditor URL for the CDN to Use
-			local.ckeditorURl="https://cdn.ckeditor.com/ckeditor5/11.1.1/classic/ckeditor.js";
 			local.after = local.after & "
 			<script>
 				ClassicEditor
@@ -60,7 +59,11 @@ component displayname="ckEditor" output="false" author="Reuben Brown" support="r
 							console.error( error );
 					} );
 			</script>";
-			cfhtmlhead( text='<script src="#local.ckeditorURl#"></script>' );
+			if (arguments.loadCkEditorLib) {
+				// set CKEditor URL for the CDN to Use
+				local.ckeditorURl="https://cdn.ckeditor.com/ckeditor5/11.1.1/classic/ckeditor.js";
+				cfhtmlhead( text='<script src="#local.ckeditorURl#"></script>' );
+			}
 		}
 		arguments.name = $tagName(arguments.objectName, arguments.property);
 		local.content = $formValue(argumentCollection=arguments);
