@@ -1,6 +1,6 @@
 {
     "name":"ckEditor Plugin",
-    "version":"1.0",
+    "version":"1.0.1",
     "author":"Reuben Brown",
     "location":"reubenbrown13/cfwheels-ckEditor-plugin",
     "directory":"/plugins/",
